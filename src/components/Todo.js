@@ -3,7 +3,7 @@ import React from 'react';
 function Todo() {
   return (
     <div>
-      <p>Todo item</p>
+      {/* <p>Todo item</p> */}
     </div>
   );
 }

@@ -11,9 +11,9 @@ class NewTodoForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("connected");
+    // pass todo from here to TodoList component
+    this.props.addTodo(this.state.todo);
     this.setState({ todo: "" });
-
   }
 
   render () {
