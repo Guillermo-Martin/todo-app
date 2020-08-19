@@ -6,13 +6,20 @@ class NewTodoForm extends Component {
   }
 
   handleInputChange = event => {
-    this.setState({todo: event.target.value})
+    this.setState({ todo: event.target.value })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log("connected");
+    this.setState({ todo: "" });
+
   }
 
   render () {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input 
             type="text"
             name="todo"
