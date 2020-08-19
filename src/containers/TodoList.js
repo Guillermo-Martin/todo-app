@@ -10,16 +10,25 @@ class TodoList extends Component {
 
   // create function to add todo from form
   addTodo = (todo) => {
-    
     // take todo from form and use it to change todoItems state
     // spread out current todoItems state, then add todo from form
     this.setState(state => ({todoItems: [...state.todoItems, todo]}));
   }
 
+  // create function to delete todo
+  handleDelete = () => {
+    alert("deleted!");
+  }
+
   render () {
     // for every item in the todoItems array, render a Todo
     const allTodos = this.state.todoItems.map(todo =>
-      <li><Todo todo={todo} /></li>
+      <li>
+        <Todo 
+          todo={todo.todo} 
+          delete={this.handleDelete}
+        />
+      </li>
     );
 
     return (
