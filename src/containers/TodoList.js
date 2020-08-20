@@ -16,19 +16,25 @@ class TodoList extends Component {
   }
 
   // create function to delete todo
-  handleDelete = () => {
-    alert("deleted!");
+  handleDelete = (id) => {
+    // filter the todoItems array; create new array with all items that don't match the id of the clicked todo
+    const afterDelete = this.state.todoItems.filter(todo => todo.id !== id);
+    // setState to be the new array
+    this.setState({ todoItems: afterDelete });
+
   }
 
   render () {
     // for every item in the todoItems array, render a Todo
     const allTodos = this.state.todoItems.map(todo =>
-      <li>
+      // <li key={todo.id}>
         <Todo 
+          key={todo.id}
+          id={todo.id}
           todo={todo.todo} 
           delete={this.handleDelete}
         />
-      </li>
+      // </li>
     );
 
     return (
