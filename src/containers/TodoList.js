@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NewTodoForm from './NewTodoForm';
-import Todo from './../components/Todo';
+import Todo from './Todo';
 
 
 class TodoList extends Component {
@@ -21,20 +21,19 @@ class TodoList extends Component {
     const afterDelete = this.state.todoItems.filter(todo => todo.id !== id);
     // setState to be the new array
     this.setState({ todoItems: afterDelete });
-
   }
 
   render () {
     // for every item in the todoItems array, render a Todo
     const allTodos = this.state.todoItems.map(todo =>
-      // <li key={todo.id}>
+      <li key={todo.id}>
         <Todo 
           key={todo.id}
           id={todo.id}
           todo={todo.todo} 
           delete={this.handleDelete}
         />
-      // </li>
+      </li>
     );
 
     return (
