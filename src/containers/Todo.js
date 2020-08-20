@@ -2,19 +2,23 @@ import React, { Component } from 'react';
 
 class Todo extends Component {
   state = {
-    showInput: false
+    showInput: false,
+    editTodo: ""
   }
 
   // handleEdit function
   // will change state for showInput
   handleEdit = () => {
     if(this.state.showInput) {
-      console.log("It's showing, so now i'll hide it");
       this.setState({showInput: false});
     } else {
-      console.log("It's not showing, so now i'll show it");
-      this.setState({showInput: true});
+      // when input is shown, pass todo to editTodo state, which will be the input value in form
+      this.setState({showInput: true, editTodo: this.props.todo});
     }
+  }
+
+  handleInputChange = event => {
+    this.setState({ editTodo: event.target.value });
   }
 
   render() {
@@ -24,7 +28,15 @@ class Todo extends Component {
         {/* if this.state.showInput is "true" then show input; if "false" show todo */}
         {(this.state.showInput) 
           ? 
-            <input></input>
+            <form>
+              <input 
+                type="text"
+                name="editTodo"
+                value={this.state.editTodo}
+                onChange={this.handleInputChange}
+              />
+            </form>
+            
           : 
             <p>
               {this.props.todo}

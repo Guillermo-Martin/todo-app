@@ -7,7 +7,7 @@ class NewTodoForm extends Component {
   }
 
   handleInputChange = event => {
-    this.setState({ todo: event.target.value })
+    this.setState({ todo: event.target.value });
   }
 
   handleSubmit = event => {
