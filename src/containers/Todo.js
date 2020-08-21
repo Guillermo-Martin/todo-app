@@ -4,7 +4,6 @@ class Todo extends Component {
   state = {
     showInput: false,
     currentTodo: "",
-    // editTodo: ""
   }
 
   // handleEdit function
@@ -13,7 +12,7 @@ class Todo extends Component {
     if(this.state.showInput) {
       this.setState({showInput: false});
     } else {
-      // when input is shown, pass todo to editTodo state, which will be the input value in form
+      // when input is shown, pass the current todo to the currentTodo state, which will be the value in form below
       this.setState({showInput: true, currentTodo: this.props.todo});
     }
   }
@@ -24,8 +23,8 @@ class Todo extends Component {
 
   handleEditSubmit = event => {
     event.preventDefault();
-    // pass edited todo to the TodoList component
-    this.props.edit(this.state.currentTodo);
+    // pass edited todo and its id to the TodoList component
+    this.props.edit(this.state.currentTodo, this.props.id);
     this.setState({showInput: false});
     // console.log("you edited me");
   }
@@ -41,7 +40,6 @@ class Todo extends Component {
               <input 
                 type="text"
                 name="editTodo"
-                // placeholder={this.state.currentTodo}
                 value={this.state.currentTodo}
                 onChange={this.handleInputChange}
               />

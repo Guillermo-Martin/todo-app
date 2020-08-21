@@ -13,13 +13,21 @@ class TodoList extends Component {
     // take todo from form and use it to change todoItems state
     // spread out current todoItems state, then add todo from form
     this.setState(state => ({todoItems: [...state.todoItems, todo]}));
-    console.log(this.state.todoItems, "line 16");
+    // console.log(this.state.todoItems, "line 16");
   }
 
   // create edit function to change a todo from todo form
-  editTodo = (edit) => {
-    console.log(edit, "line 21");
-    // change the todo to the edited todo
+  editTodo = (edit, id) => {
+    // edit is from the Todo component edit form
+    // console.log(edit, id, "line 21");
+    // find the todo by id (filteredTodo is an array)
+    let filteredTodo = this.state.todoItems.filter(todo => todo.id === id);
+    
+    // change the filtered todo to be "edit"
+    filteredTodo[0].todo = edit;
+
+    // change the todoItems state to be the all of the todos (which now has the edited todo)
+    this.setState({todoItems: this.state.todoItems});
   }
 
   // create function to delete todo
