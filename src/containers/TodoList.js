@@ -20,14 +20,17 @@ class TodoList extends Component {
   editTodo = (edit, id) => {
     // edit is from the Todo component edit form
     // console.log(edit, id, "line 21");
-    // find the todo by id (filteredTodo is an array)
-    let filteredTodo = this.state.todoItems.filter(todo => todo.id === id);
+    // create a copy of the todoItems state
+    let updatedTodoItems = [...this.state.todoItems];
+
+    // find the todo by id (updatedTodoItems is an array)
+    let filteredTodo = updatedTodoItems.filter(todo => todo.id === id);
     
     // change the filtered todo to be "edit"
     filteredTodo[0].todo = edit;
 
-    // change the todoItems state to be the all of the todos (which now has the edited todo)
-    this.setState({todoItems: this.state.todoItems});
+    // change the todoItems state to be "updatedTodoItems" (which now has the edited todo)
+    this.setState({todoItems: updatedTodoItems});
   }
 
   // create function to delete todo
